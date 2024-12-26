@@ -3,7 +3,7 @@
 ## Introduction
 Golang, also known as Go, is an open-source programming language developed by Google. Designed for efficiency, simplicity, and high performance, Go is widely used to build backend applications, cloud services, and distributed systems. With its robust concurrency support through goroutines, Go empowers developers to manage multiple tasks simultaneously with optimal performance. The language also boasts a rich ecosystem of libraries and built-in tools like gofmt to ensure code consistency.
 
-### 1. Hello World
+## 1. Hello World
 to display something in the terminal, we can use the `fmt` library
 
 ```go
@@ -17,10 +17,10 @@ func main() {
 ```
 
 #### Explanation
-`package main`: the indicates it as the main application
-`func main()`: it is the main function that will be executed first when the application runs
+- `package main`: the indicates it as the main application
+- `func main()`: it is the main function that will be executed first when the application runs
 
-### 2. Data Types
+## 2. Data Types
 Golang provides a rich set of data types to handle various kinds of data efficiently. understanding these typesis essential for writing robust and performant programs
 
 #### Numeric Types (Integer)
@@ -56,4 +56,172 @@ immutable sequences of bytes that represent text
   fmt.println("iam learn golang")
 ```
 
-### 3. 
+## 3. Variable
+variable are fundamental in any programming language, including Golang. they are used to store and manage data during the execution of a program. in Go, variable have specific characteristics and can be declared in multiple ways to suit various use cases.
+
+```go
+var name string
+name = "Muzammil"
+
+var address string = "Jakarta"
+var gender = "male"
+```
+
+besides using `var`, we can also use the `:=` syntax when creating variables
+
+```go
+  email := "email@email.com"
+```
+
+you can declare and initialize multiple variables in a single line
+
+```go
+var x, y, z int = 1, 2, 3
+var (
+  firstName = "Muzammil"
+  lastName = "nm"
+)
+a, b := "Go", "Language"
+```
+
+## 4. Constant
+constants are immutable values that are determined at complile-time and cannot be changed during the excetion of the program.
+
+```go
+const firstName = "Muzammil"
+const lastName string = "nm"
+
+lastName = "nm" // cannot assign to lastName
+```
+
+## 5. Type Conversion
+type convertion is the process  of explicitly converting a value from one data type to another
+
+```go
+var a int32 = 32768
+var b int64 = int64(a)
+var c int16 = int16(a) // number overflow
+```
+
+if you want to convert a number to a string, you can do it like this
+
+```go
+var fullName = "Muzammil nm"
+var getM = fullName[0]
+var mToString = string(getM)
+```
+
+## 5. Type Declarations
+type declaration allows developers to crate custom types that are derived from existing types. this feature is powerful for improving code readability, creating domain-specific types, and iplementing methods on custom types.
+
+```go
+type Money uint
+
+var saldoJohn Money = 50000000
+var saldoDoe uint = 20000000
+
+var saldoDoeToMoney Money = Money(saldoDoe)
+```
+
+## 6. Operators
+operators are symbols or keyword that perform operation on operands. they are used to manipulate data, compare values, and control the flow of execution
+
+### Arithmetic Operators
+Used for mathematical calculations.
+| Operator | Description	       | Example   |
+| :------- | :-----------------: | :------   |
+| `+`      | Addition 	         | `a + b`   |
+| `-`      | Subtraction	       | `a - b`   |
+| `*`      | Multiplication      |	`a * b`  |
+| `/`	     | Division	           | `a / b`   |
+| `%`      | Modulus (Remainder) |	`a % b`  |
+
+Example :
+```go
+a, b := 10, 3
+
+fmt.Println("Addition:", a+b)       // Output: 13
+fmt.Println("Subtraction:", a-b)    // Output: 7
+fmt.Println("Multiplication:", a*b) // Output: 30
+fmt.Println("Division:", a/b)       // Output: 3
+fmt.Println("Modulus:", a%b)        // Output: 1
+```
+
+### Relational Operator
+used to compare two values, returning a boolean (`true` or `false`)
+
+| Operator | Description	            | Example  |
+| :------- | :---------------------:  | :------  |
+| `==`     | Equal to	                | `a == b` |
+| `!=`     | Not equal to	            | `a != b` |
+| `>`	     | Greater than	            | `a > b`  |
+| `<`	     | Less than	              | `a < b`  |
+| `>=`	   | Greater than or equal to |	`a >= b` |
+| `<=`	   | Less than or equal to    | `a <= b` |
+
+Example :
+```go
+a, b := 10, 3
+
+fmt.Println("Equal to:", a == b)    // Output: false
+fmt.Println("Not Equal to:", a != b) // Output: true
+fmt.Println("Greater than:", a > b)  // Output: true
+fmt.Println("Less than:", a < b)     // Output: false
+fmt.Println("Greater than or equal:", a >= b) // Output: true
+fmt.Println("Less than or equal:", a <= b)    // Output: false
+```
+
+### Logical Operator
+used to perform logical operations, commonly in conditional statements
+
+|Operator |	Description	|Example     |
+| :-----  | :-------:   | :------    |
+| `&&`	  | Logical AND	| `a && b`   |
+| `\|\|`  | Logical OR  | `a \|\| b` |
+| `!`	    | Logical NOT	| `!a`       |
+
+Example :
+```go
+a, b := 10, 3
+
+fmt.Println("Logical AND:", (a > b) && (b > 1))   // Output: true
+fmt.Println("Logical OR:", (a < b) || (b > 1))    // Output: true
+fmt.Println("Logical NOT:", !(a == b))             // Output: true
+```
+
+### Assignment Operator
+used to assign values to variables
+
+| Operator |	 Description       |	Example                             |
+| :------- | :----------------:  | :----------------------------------- |
+|   `=`    | Simple assignment   | `a = b`                              |
+|   `+=`   | Add and assign	     | `a += b` (equivalent to `a = a + b`) |
+|   `-=`   | Subtract and assign | `a -= b` (equivalent to `a = a - b`) |
+|   `*=`   | Multiply and assign | `a *= b` (equivalent to `a = a * b`) |
+|   `/=`   | Divide and assign	 | `a /= b` (equivalent to `a = a / b`) |
+|   `%=`   | Modulus and assign	 | `a %= b` (equivalent to `a = a % b`) |
+
+
+### Bitwise Operator
+perform operations on binary representations of integers
+
+| Operator | Description          | Example                           | Result (Binary)      | Result (Decimal) |
+|----------|----------------------|-----------------------------------|----------------------|------------------|
+| `&`      | Bitwise AND          | `a & b` (5 & 3)                  | `00000001`           | `1`              |
+| `|`      | Bitwise OR           | `a | b` (5 | 3)                  | `00000111`           | `7`              |
+| `^`      | Bitwise XOR          | `a ^ b` (5 ^ 3)                  | `00000110`           | `6`              |
+| `&^`     | Bit Clear (AND NOT)  | `a &^ b` (5 &^ 3)                | `00000100`           | `4`              |
+| `<<`     | Left shift           | `a << 1` (5 << 1)                | `00001010`           | `10`             |
+| `>>`     | Right shift          | `a >> 1` (5 >> 1)                | `00000010`           | `2`              |
+
+Example :
+```go
+a, b := 10, 3
+
+fmt.Println("Bitwise AND:", a&b)    // Output: 2 (00001010 & 00000011 = 00000010)
+fmt.Println("Bitwise OR:", a|b)     // Output: 11 (00001010 | 00000011 = 00001011)
+fmt.Println("Bitwise XOR:", a^b)    // Output: 9 (00001010 ^ 00000011 = 00001001)
+fmt.Println("Bitwise AND NOT:", a&^b) // Output: 8 (00001010 &^ 00000011 = 00001000)
+fmt.Println("Left Shift:", a<<1)    // Output: 20 (00001010 << 1 = 00010100)
+fmt.Println("Right Shift:", a>>1)   // Output: 5 (00001010 >> 1 = 00000101)
+```
