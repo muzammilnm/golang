@@ -225,3 +225,131 @@ fmt.Println("Bitwise AND NOT:", a&^b) // Output: 8 (00001010 &^ 00000011 = 00001
 fmt.Println("Left Shift:", a<<1)    // Output: 20 (00001010 << 1 = 00010100)
 fmt.Println("Right Shift:", a>>1)   // Output: 5 (00001010 >> 1 = 00000101)
 ```
+
+## 7. Array
+array is a data structure used to store a fixed number of elements of the same type in a contiguous block memory
+
+### Declaring an Array
+you can declare an array by specifying its size and type
+```go
+var arr [5]int
+```
+
+### initializing an Array
+you can directly assign values during declaration
+```go
+var arr = [3]int{1,2,3}
+```
+
+### Using Ellipsis (`...`)
+if the size is not specified, Golang can infer it using an ellipsis
+```go
+arr := [...]int{4,5,6}
+```
+
+### Accesing Array
+Element in an array are accessed using their index, starting from 0
+```go
+arr = [3]string{"iam", "learn", "golang"}
+fmt.Println(arr[0])
+```
+
+you can also modify elements by their index
+```go
+arr[0] = "you"
+fmt.Println(arr)
+```
+
+### Getting the length of an array
+use the `len()` function to determine the length of an array
+```go
+arr := [4]int{10, 20, 30, 40}
+fmt.Println(len(arr)) // Output: 4
+```
+
+### Iterating over an array
+Use a `for` loop to iterate through the elements
+```go
+arr := [3]int{10, 20, 30}
+for i := 0; i < len(arr); i++ {
+    fmt.Println(arr[i])
+}
+```
+
+alternatively, use `for range` loop for a simpler approach
+```go
+for index, value := range arr {
+    fmt.Printf("Index: %d, Value: %d\n", index, value)
+}
+```
+
+## 8. Slice
+slice in golang is lightweight and flexible abstraction of an array. while an array has a fixed size, a slice provides a way to work with sequences of elements that can grow or shrink dinamicaly
+
+### creating and initializing slices
+you can create a slice using the `[]` notation without specifying a size
+```go
+var slice []int
+fmt.Println(slice) // Output: []
+```
+
+using `make()` function is to create a slice with a specific length and capacity
+```go
+slice := make([]int, 5, 10)
+fmt.Println(slice) // Output: [0 0 0 0 0]
+```
+
+a slice can be created from an existing array
+```go
+arr := [5]int{1, 2, 3, 4, 5}
+slice := arr[1:4]
+fmt.Println(slice) // Output: [2 3 4]
+```
+
+you can initialize a slice with values directly
+```go
+slice := []string{"Go", "is", "fun"}
+fmt.Println(slice) // Output: [Go is fun]
+```
+
+### Accessing and Modifying slice elements
+elements in a slice are accessed and modified using their index, similar to arrays
+```go
+slice := []int{10, 20, 30}
+fmt.Println(slice[1]) // Output: 20
+slice[1] = 25
+fmt.Println(slice)    // Output: [10 25 30]
+```
+
+### Appending elements to a slice
+you can use the `append()` function to add elements to a slice dinamically
+```go
+slice := []int{1, 2, 3}
+slice = append(slice, 4, 5)
+fmt.Println(slice) // Output: [1 2 3 4 5]
+```
+
+### Copy a slice
+the `copy()` function is used to copy elements from one slice to another
+```go
+src := []int{1, 2, 3}
+dest := make([]int, len(src))
+copy(dest, src)
+fmt.Println(dest) // Output: [1 2 3]
+```
+
+### Length and capacity
+<b>length</b> is the number of elements in the slice. <b>capacity</br> is the total number of elements the slice can hold before reallocating memory
+```go
+slice := make([]int, 3, 5)
+fmt.Println(len(slice)) // Output: 3
+fmt.Println(cap(slice)) // Output: 5
+```
+
+### Slicing in slice
+slices can be sliced further to create new slices
+```go
+slice := []int{1, 2, 3, 4, 5}
+subSlice := slice[1:4]
+fmt.Println(subSlice) // Output: [2 3 4]
+```
